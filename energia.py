@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from PIL import ImageTk, Image
 #from ttkthemes import themed_tk
 
 root = Tk()
@@ -7,7 +8,8 @@ root.title("Convertidor Unidades Energia")
 root.geometry("460x440+427+100")
 #root.themed_tk.ThemedTk(theme="itft1")
 root.resizable(False,False)
-root.config(bg="#9699F0")
+root.config(bg="#9c9c9c")
+
 
 unidades = [
     "julios(j)",
@@ -163,11 +165,14 @@ def converter():
             resultado['text'] = str (format(conv_j_kwh,'.1E'))
               
     except ValueError:
-        resultado['text'] = "solo numeros"
+        resultado['text'] = "Ingresa N°"
 
 def limpiar():
     entri1.delete(0,END)
-    resultado["text"]=""
+    resultado["text"]= "Conversion"
+    menu1.current(0)
+    menu2.current(1)
+    entri1.focus()
 
 labelframe = LabelFrame(root,text="Energia",bg="#162215",font=("Arial",20,"bold"),bd=5,fg="#03C000")
 labelframe.grid(column=0,row=0,padx=10,pady=10,ipady=10)
@@ -185,18 +190,24 @@ entri1.bind("<Double-Button-1>",click)
 resultado = Label(labelframe,text="Conversion",bg="#E0E0E0",font=("Calibri",20))
 resultado.grid(column=1,row=0,padx=5,pady=5,ipady=10,ipadx=15)
 
-menu1 = ttk.Combobox(labelframe,values=unidades,justify= "center")
+menu1 = ttk.Combobox(labelframe,values=unidades,justify= "center",state="readonly")
 menu1.grid(column=0,row=1,padx=10,pady=10,ipady=5)
 menu1.current(0)
 
-menu2 = ttk.Combobox(labelframe,values=unidades,justify= "center")
+menu2 = ttk.Combobox(labelframe,values=unidades,justify= "center",state="readonly")
 menu2.grid(column=1,row=1,padx=10,pady=10,ipady=5)
 menu2.current(1)
 
-button1 = Button(labelframe,text="Limpiar",bg="#03C000")
+button1 = Button(labelframe,text="Limpiar",bg="#03C000",command=limpiar)
 button1.grid(column=0,row=2,padx=10,pady=10)
 
 button2 = Button(labelframe,text="Convertir",command=converter,bg="#03C000")
 button2.grid(column=1,row=2,padx=10,pady=10)
+
+image = Image.open("./img/energia.jpg")
+image = image.resize((380,170),Image.ANTIALIAS)
+img = ImageTk.PhotoImage(image)
+lbl = Label(root, image=img)
+lbl.place (x=40,y=250)
 
 root.mainloop()
