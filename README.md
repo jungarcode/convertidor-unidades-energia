@@ -6,6 +6,6 @@
 
 
 
-Para mas detalle visita el articulo en [www.jungar.me](https://github.com/jungarcode/convertidor-unidades-energia)
+Para mas detalle visita el articulo en [www.jungar.me](https://www.jungar.me/2021/11/convertidor-de-unidades-de-energia.html)
  
 
