@@ -5,14 +5,14 @@ from PIL import ImageTk, Image
 
 root = Tk()
 root.title("Convertidor Unidades Energia")
-root.geometry("520x440+427+100")
+root.geometry("520x500+427+100")
 #root.themed_tk.ThemedTk(theme="itft1")
 root.resizable(False,False)
 root.config(bg="#9c9c9c")
 
 
 unidades = [
-    "juoule(j)",
+    "joule(j)",
     "kilovatios hora(KWh)",
     "Electrovoltio(eV)",
     "Uni.Term.Britanica(BTU)",
@@ -21,7 +21,6 @@ unidades = [
     "Kilojoule(kj)", 
     "megajoule(Mj)",
     "megavatio-hora(MWh)",
-    
 ]
 conversiones = [
     1,
@@ -73,6 +72,7 @@ def converter():
         elif  op1 == unidades[0] and op2 == unidades[8]:
             conv_j_kwh = entrada * (conversiones[pos_op1] * conversiones[pos_op2])
             resultado['text'] = str (format(conv_j_kwh,'.1E'))   
+            
         # conversiones de kwh a demas unidades
         
         elif  op1 == unidades[1] and op2 == unidades[0]:
@@ -102,6 +102,7 @@ def converter():
         elif  op1 == unidades[1] and op2 == unidades[8]:
             conv_j_kwh = entrada * (conversiones[pos_op2] / conversiones[pos_op1])
             resultado['text'] = str (format(conv_j_kwh,'.1E'))
+            
         # convertir de eV a demas unidades  
         
         elif  op1 == unidades[2] and op2 == unidades[0]:
@@ -130,7 +131,8 @@ def converter():
             resultado['text'] = str (format(conv_j_kwh,'.1E')) 
         elif  op1 == unidades[2] and op2 == unidades[8]:
             conv_j_kwh = entrada * (conversiones[pos_op2] / conversiones[pos_op1])
-            resultado['text'] = str (format(conv_j_kwh,'.1E'))  
+            resultado['text'] = str (format(conv_j_kwh,'.1E')) 
+             
         # convertir de BTU a demas unidades  
         
         elif  op1 == unidades[3] and op2 == unidades[0]:
@@ -159,7 +161,8 @@ def converter():
             resultado['text'] = str (format(conv_j_kwh,'.1E')) 
         elif  op1 == unidades[3] and op2 == unidades[8]:
             conv_j_kwh = entrada * (conversiones[pos_op2] / conversiones[pos_op1])
-            resultado['text'] = str (format(conv_j_kwh,'.1E'))     
+            resultado['text'] = str (format(conv_j_kwh,'.1E'))  
+               
         # convertir de TOE a demas unidades  
         
         elif  op1 == unidades[4] and op2 == unidades[0]:
@@ -189,6 +192,7 @@ def converter():
         elif  op1 == unidades[4] and op2 == unidades[8]:
             conv_j_kwh = entrada * (conversiones[pos_op2] / conversiones[pos_op1])
             resultado['text'] = str (format(conv_j_kwh,'.1E'))  
+            
          # convertir de TCE a demas unidades  
         
         elif  op1 == unidades[5] and op2 == unidades[0]:
@@ -218,6 +222,7 @@ def converter():
         elif  op1 == unidades[5] and op2 == unidades[8]:
             conv_j_kwh = entrada * (conversiones[pos_op2] / conversiones[pos_op1])
             resultado['text'] = str (format(conv_j_kwh,'.1E'))
+            
         # convertir de kj a demas unidades  
         
         elif  op1 == unidades[6] and op2 == unidades[0]:
@@ -247,6 +252,7 @@ def converter():
         elif  op1 == unidades[6] and op2 == unidades[8]:
             conv_j_kwh = entrada * (conversiones[pos_op2] / conversiones[pos_op1])
             resultado['text'] = str (format(conv_j_kwh,'.1E'))
+            
         # convertir de mj a demas unidades  
         
         elif  op1 == unidades[7] and op2 == unidades[0]:
@@ -276,6 +282,7 @@ def converter():
         elif  op1 == unidades[7] and op2 == unidades[8]:
             conv_j_kwh = entrada * (conversiones[pos_op2] / conversiones[pos_op1])
             resultado['text'] = str (format(conv_j_kwh,'.1E'))  
+            
          # convertir de mvh a demas unidades  
         
         elif  op1 == unidades[8] and op2 == unidades[0]:
@@ -318,7 +325,7 @@ def limpiar():
     entri1.focus()
 
 labelframe = LabelFrame(root,text="Energia",bg="#162215",font=("Arial",20,"bold"),bd=5,fg="#03C000")
-labelframe.grid(column=0,row=0,padx=50,pady=10,ipady=10)
+labelframe.grid(column=0,row=0,padx=40,pady=10,ipady=10)
 
 entri1 = Entry(labelframe,width=15,font=("Calibri",14,"bold"),justify=CENTER)
 entri1.grid(column=0,row=0,padx=5,pady=5,ipady=10,ipadx=10)
@@ -350,9 +357,9 @@ button2.grid(column=1,row=2,padx=10,pady=10)
 
 
 image = Image.open("./img/energia.jpg")
-image = image.resize((380,170),Image.ANTIALIAS)
+image = image.resize((450,200),Image.ANTIALIAS)
 img = ImageTk.PhotoImage(image)
 lbl = Label(root, image=img)
-lbl.place (x=30,y=250)
+lbl.place (x=35,y=250)
 
 root.mainloop()
